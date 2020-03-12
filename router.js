@@ -1,6 +1,6 @@
-import Stories from "./pages/stories"
+import Stories from "./pages/stories.js"
 
-const router = new Navigator(null, true, "#")
+const router = new Navigo(null, true, "#")
 
 export default class RouterHandler {
     constructor() {
@@ -15,7 +15,7 @@ export default class RouterHandler {
         routes.forEach(route => {
             //this syntax is for adding a route Navigo syntax
             //router.on('path', callback).resolve()
-            router.onLine(route.path, () => {
+            router.on(route.path, () => {
                 console.log(route.page());
             }).resolve();
         })
