@@ -2,15 +2,29 @@ import view from "../utils/view.js"
 import Story from "../components/Story.js"
 
 export default async function Item() {
-    const story = await getStory()
+    let story = null;
+    let hasComments = false;
+    let hasError = false;
+
+    try {
+        story = await getStory()
+        hasComments = story.comments.length > 0
+    } catch(error) {
+        hasError = true;
+        console.log(error)
+    }
+
+    if(hasError) {
+        view.innerHTML = `<div>Error fetch story</div>`
+    }
+    
     view.innerHTML = `
         <div>
             ${Story(story)}
         </div>
         <hr/>
-        ${story.comments.map(comment => `<div>${comment.content}</div>`).join("")}
+        ${hasComments ? story.comments.map(comment => JSON.stringify(comment)).join("") : "No comments"}
     `
-
 }
 
 async function getStory() {
