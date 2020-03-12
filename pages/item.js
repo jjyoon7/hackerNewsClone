@@ -3,7 +3,14 @@ import Story from "../components/Story.js"
 
 export default async function Item() {
     const story = await getStory()
-    view.innerHTML = `<div>${Story(story)}</div>`
+    view.innerHTML = `
+        <div>
+            ${Story(story)}
+        </div>
+        <hr/>
+        ${story.comments.map(comment => `<div>${comment.content}</div>`).join("")}
+    `
+
 }
 
 async function getStory() {
@@ -12,3 +19,5 @@ async function getStory() {
     const story = await response.json();
     return story
 }
+
+// ${story.comments.map(comment => `<div>${comment}</div>`).join("")}
