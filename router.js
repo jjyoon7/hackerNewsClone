@@ -9,14 +9,17 @@ export default class RouterHandler {
 
     createRoutes() {
         const routes = [
-            {path: "/", page: Stories}
+            {path: "/", page: Stories},
+            {path: "/new", page: Stories},
+            {path: "/ask", page: Stories},
+            {path: "/show", page: Stories}
         ];
 
-        routes.forEach(route => {
+        routes.forEach(({path, page}) => {
             //this syntax is for adding a route Navigo syntax
             //router.on('path', callback).resolve()
-            router.on(route.path, () => {
-                console.log(route.page());
+            router.on(path, () => {
+                page(path)
             }).resolve();
         })
     }
