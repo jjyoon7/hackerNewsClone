@@ -11,7 +11,7 @@ async function getStories(path) {
     if(isHomeRoute) {
         path = "/news"
     }
-    const response = await fetch(`https://node-hnapi.herokuapp.com${path}`)
+    const response = await fetch(`https://node-hnapi.herokuapp.com${path}`);
     const stories = await response.json();
-    return stories
+    return stories;
 }
