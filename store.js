@@ -1,8 +1,12 @@
 function reducer(state, action) {
-    switch(state.type) {
-        case "ADD":
+    switch(action.type) {
+        case "ADD_FAVORITE":
             //change state to add
-        case "REMOVE":
-            //change state to remove    
+        case "REMOVE_FAVORITE":
+            //change state to remove
+        default:
+            return state    
     }
 }
+
+const action = { type: "ADD_FAVORITE" }
