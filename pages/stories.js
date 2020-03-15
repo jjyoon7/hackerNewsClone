@@ -6,7 +6,7 @@ import checkFavorite from "../utils/checkFavorite.js"
 
 export default async function Stories(path) {
     const { favorites } = store.getState();
-    const stories = await getStories(path);
+    let stories = await getStories(path);
     const hasStories = stories.length > 0;
 
     view.innerHTML = `<div>

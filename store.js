@@ -1,4 +1,4 @@
-function createStore() {
+function createStore(reducer) {
     let currentState = reducer(undefined, {});
 
     return {
@@ -15,15 +15,15 @@ const initialState = {
 
 function favoritesReducer(state = initialState, action) {
     switch(action.type) {
-        case "ADD_FAVORITE":
+        case "ADD_FAVORITE":{
             const addedFavorite = action.payload.favorite;
             const favorites = [...state.favorite, addedFavorite];
-            return {favorites};
-        case "REMOVE_FAVORITE":
+            return {favorites};}
+        case "REMOVE_FAVORITE":{
             //change state to remove
             const removedFavoriteId = action.payload.favorite.id;
             const favorites = state.favorites.filter(favorite => favorite.id !== removedFavoriteId);
-            return {favorite};
+            return {favorite};}
         default:
             return state;    
     }

@@ -17,7 +17,7 @@ export default function Story(story) {
                     |
                     <span class="favorite">
                       <img class="heart" src="https://icon.now.sh/heart/ccc">
-                      Add To Favorites
+                        ${ story.isFavorite ? "Remove From Favorites" : "Add To Favorites"}
                     </span>
                 </div>
             </div>
